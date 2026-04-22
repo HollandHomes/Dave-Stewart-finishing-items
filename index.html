@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposal - Holland Family Home Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .option-card.selected { border-color: #2563eb; background-color: #eff6ff; }
+        .hidden-print { display: block; }
+        @media print {
+            .hidden-print { display: none !important; }
+            .no-break { break-inside: avoid; }
+            body { background-color: white; }
+            .shadow-lg { box-shadow: none !important; }
+            .border { border: 1px solid #ddd !important; }
+            input[type="checkbox"] { -webkit-print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen py-10 print:py-0">
+
+    <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden border border-gray-200 print:shadow-none print:border-0">
+        
+        <!-- Header -->
+        <div class="bg-slate-800 text-white p-8 print:bg-white print:text-black print:border-b-2 print:border-black">
+            <div class="flex justify-between items-start">
+                <div>
+                    <h1 class="text-3xl font-bold uppercase tracking-wider">Holland Family</h1>
+                    <h2 class="text-xl font-light text-slate-300 print:text-gray-600">Home Services, Inc.</h2>
+                    <p class="mt-4 text-sm text-slate-400 print:text-gray-600">
+                        70 Copperhead Trail<br>
+                        Murphy, NC 28906<br>
+                        828-541-2442 | Thehollandseven@gmail.com
+                    </p>
+                </div>
+                <div class="text-right">
+                    <h3 class="text-2xl font-bold">PROPOSAL</h3>
+                    <p class="text-slate-400 print:text-gray-600" id="current-date">Date: </p>
+                    <div class="mt-4 bg-slate-700 p-4 rounded text-left print:bg-gray-100 print:text-black">
+                        <p class="text-xs uppercase text-slate-400 font-semibold mb-1">Prepared For:</p>
+                        <p class="font-bold text-lg">Dave and Liz Stewart</p>
+                        <p>134 River Run Dr.</p>
+                        <p>Murphy, NC 28906</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Overview -->
+        <div class="p-8 border-b border-gray-200">
+            <h3 class="text-lg font-bold text-gray-800 mb-2 uppercase">Project Overview</h3>
+            <p class="text-gray-600 mb-4">
+                Completion of kitchen cabinetry details, electrical finishing, island woodwork, exterior door replacement, and professional backsplash tile installation. This proposal is a "menu-style" document. <strong>Please check the items you wish to move forward with.</strong>
+            </p>
+            
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+                <p class="text-sm text-blue-800 italic">
+                    <strong>Payment Policy:</strong> Payments are due upon the completion of each individual task selected below.
+                </p>
+            </div>
+        </div>
+
+        <!-- Base Scope -->
+        <div class="p-8 border-b border-gray-200 bg-gray-50">
+            <h3 class="text-lg font-bold text-gray-800 mb-4 uppercase">1. Primary Labor Selection</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm">
+                    <thead>
+                        <tr class="border-b border-gray-300">
+                            <th class="py-2 px-2 w-10"></th>
+                            <th class="py-2 font-semibold text-gray-600">Description</th>
+                            <th class="py-2 text-right font-semibold text-gray-600">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody id="base-services-list">
+                        <!-- Phase 1 -->
+                        <tr class="border-b border-gray-200 hover:bg-white transition-colors cursor-pointer" onclick="toggleCheckbox('check-p1')">
+                            <td class="py-3 px-2 align-top">
+                                <input type="checkbox" id="check-p1" class="h-5 w-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500" onchange="calculateTotal()" onclick="event.stopPropagation()" checked>
+                            </td>
+                            <td class="py-3 align-top">
+                                <span class="font-bold text-gray-800">Phase 1: Cabinetry & Electrical Finishing</span><br>
+                                <span class="text-gray-500 text-xs italic">Filler pieces, crown adjustment/prep, stovetop vent, door alignment, trim under cabinets, and lighting fix. (Owner sources missing crown above fridge).</span>
+                            </td>
+                            <td class="py-3 text-right font-medium align-top">$200.00</td>
+                        </tr>
+                        <!-- Phase 2 -->
+                        <tr class="border-b border-gray-200 hover:bg-white transition-colors cursor-pointer" onclick="toggleCheckbox('check-p2')">
+                            <td class="py-3 px-2 align-top">
+                                <input type="checkbox" id="check-p2" class="h-5 w-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500" onchange="calculateTotal()" onclick="event.stopPropagation()">
+                            </td>
+                            <td class="py-3 align-top">
+                                <span class="font-bold text-gray-800">Phase 2: Island Detailing</span><br>
+                                <span class="text-gray-500 text-xs italic">Installation of wood under the island as discussed in walkthrough.</span>
+                            </td>
+                            <td class="py-3 text-right font-medium align-top">$250.00</td>
+                        </tr>
+                        <!-- Phase 3 -->
+                        <tr class="border-b border-gray-200 hover:bg-white transition-colors cursor-pointer" onclick="toggleCheckbox('check-p3')">
+                            <td class="py-3 px-2 align-top">
+                                <input type="checkbox" id="check-p3" class="h-5 w-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500" onchange="calculateTotal()" onclick="event.stopPropagation()">
+                            </td>
+                            <td class="py-3 align-top">
+                                <span class="font-bold text-gray-800">Phase 3: Exterior Door Installation</span><br>
+                                <span class="text-gray-500 text-xs italic">Removal of (2) existing doors and installation of (2) new doors on-site. (Owner provides final trim).</span>
+                            </td>
+                            <td class="py-3 text-right font-medium align-top">$900.00</td>
+                        </tr>
+                        <!-- Phase 4 -->
+                        <tr class="border-b border-gray-200 hover:bg-white transition-colors cursor-pointer" onclick="toggleCheckbox('check-p4')">
+                            <td class="py-3 px-2 align-top">
+                                <input type="checkbox" id="check-p4" class="h-5 w-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500" onchange="calculateTotal()" onclick="event.stopPropagation()">
+                            </td>
+                            <td class="py-3 align-top">
+                                <span class="font-bold text-gray-800">Phase 4: Tile Backsplash (Labor Only)</span><br>
+                                <span class="text-gray-500 text-xs italic">Professional installation. We provide spacers/mortar; Owner provides tile/grout. Schedule post-countertop.</span>
+                            </td>
+                            <td class="py-3 text-right font-medium align-top">$1,000.00</td>
+                        </tr>
+                        <!-- Phase 5 -->
+                        <tr class="border-b border-gray-200 hover:bg-white transition-colors cursor-pointer" onclick="toggleCheckbox('check-p5')">
+                            <td class="py-3 px-2 align-top">
+                                <input type="checkbox" id="check-p5" class="h-5 w-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500" onchange="calculateTotal()" onclick="event.stopPropagation()">
+                            </td>
+                            <td class="py-3 align-top">
+                                <span class="font-bold text-gray-800">Phase 5: Paint & Touch-up</span><br>
+                                <span class="text-gray-500 text-xs italic">Painting of new/existing trim and cabinet/crown touch-ups.</span>
+                            </td>
+                            <td class="py-3 text-right font-medium align-top">$350.00</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2" class="py-4 font-bold text-gray-800 text-right uppercase">Selected Labor Subtotal:</td>
+                            <td class="py-4 text-right font-bold text-gray-800 text-lg" id="display-base-total">$0.00</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+
+        <!-- Hardware Selection -->
+        <div class="p-8 border-b border-gray-200 no-break">
+            <h3 class="text-lg font-bold text-gray-800 mb-2 uppercase flex justify-between items-center">
+                2. Hardware Procurement
+            </h3>
+            <p class="text-gray-600 mb-6 text-sm italic">Would you like us to purchase and deliver the specific Lowes registers for Phase 1?</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Contractor Sourced - Preselected -->
+                <div id="card-mat-a" class="option-card border-2 border-blue-600 bg-blue-50 rounded-lg p-6 cursor-pointer transition-all hover:border-gray-300 selected" onclick="selectMaterial('a')">
+                    <div class="flex justify-between items-center mb-3">
+                        <div class="font-bold text-xl text-gray-800">Contractor Sourced</div>
+                        <div class="h-6 w-6 rounded-full border-2 border-blue-600 flex items-center justify-center" id="radio-mat-a">
+                            <div class="h-3 w-3 rounded-full bg-blue-600"></div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-2">
+                        (2) 4x10 Satin Nickel Floor Registers. Includes purchase, 7% sales tax, and delivery to job site.
+                    </p>
+                    <a href="https://www.lowes.com/pd/allen-roth-4-in-x-10-in-Maximum-Airflow-Steel-Satin-Nickel-Floor-Register/5013703161" target="_blank" class="text-blue-600 text-xs underline hover:text-blue-800 flex items-center gap-1 mb-4" onclick="event.stopPropagation()">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> View Selection on Lowes.com
+                    </a>
+                    <div class="text-2xl font-bold text-gray-800 text-right mt-4">$47.08</div>
+                </div>
+
+                <!-- Homeowner Sourced -->
+                <div id="card-mat-b" class="option-card border-2 border-gray-200 rounded-lg p-6 cursor-pointer transition-all hover:border-gray-300" onclick="selectMaterial('b')">
+                    <div class="flex justify-between items-center mb-3">
+                        <div class="font-bold text-xl text-gray-800">Homeowner Sourced</div>
+                        <div class="h-6 w-6 rounded-full border-2 border-gray-300 flex items-center justify-center" id="radio-mat-b">
+                            <div class="h-3 w-3 rounded-full bg-blue-600 hidden"></div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4">
+                        Homeowner will provide (2) 4x10 registers on-site prior to Phase 1 completion.
+                    </p>
+                    <div class="text-2xl font-bold text-gray-800 text-right mt-4">$0.00</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Options -->
+        <div class="p-8 border-b border-gray-200 bg-gray-50 no-break">
+            <h3 class="text-lg font-bold text-gray-800 mb-4 uppercase">3. Additional Tasks</h3>
+            
+            <div class="space-y-4">
+                <div class="flex items-center justify-between bg-white p-4 rounded border border-gray-200 shadow-sm hover:border-blue-300 transition-colors cursor-pointer" onclick="toggleCheckbox('check-addon-1')">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="check-addon-1" class="h-5 w-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500" onchange="calculateTotal()" onclick="event.stopPropagation()">
+                        <label for="check-addon-1" class="ml-3 block text-gray-800 font-medium cursor-pointer">
+                            Oven Drawer Handle Refinish
+                            <span class="block text-xs text-gray-500 font-normal italic">Remove handle, fill holes, sand, refinish paint, and reinstall.</span>
+                        </label>
+                    </div>
+                    <div class="font-bold text-gray-800">+$200.00</div>
+                </div>
+
+                <div class="flex items-center justify-between bg-white p-4 rounded border border-gray-200 shadow-sm hover:border-blue-300 transition-colors cursor-pointer" onclick="toggleCheckbox('check-addon-2')">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="check-addon-2" class="h-5 w-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500" onchange="calculateTotal()" onclick="event.stopPropagation()">
+                        <label for="check-addon-2" class="ml-3 block text-gray-800 font-medium cursor-pointer">
+                            Debris Hauling (Per Load)
+                            <span class="block text-xs text-gray-500 font-normal italic">Removal and disposal of old doors and job debris.</span>
+                        </label>
+                    </div>
+                    <div class="font-bold text-gray-800">+$150.00</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Display -->
+        <div class="p-8 bg-slate-50 border-t-4 border-slate-800 no-break">
+            <div class="flex flex-col md:flex-row justify-between items-end">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-sm text-gray-500 italic">Total value of selected services:</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm text-gray-600 uppercase font-semibold">Project Total</p>
+                    <div class="text-4xl font-bold text-slate-900" id="grand-total">$0.00</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment Breakdown -->
+        <div class="p-8 border-b border-gray-200">
+            <div class="mb-6 flex items-center justify-between">
+                <h3 class="text-lg font-bold text-gray-800 uppercase">Payment Schedule</h3>
+                <label class="flex items-center cursor-pointer">
+                    <input type="checkbox" id="use-credit-card" class="h-5 w-5 text-indigo-600 rounded focus:ring-indigo-500" onchange="calculateTotal()">
+                    <span class="ml-2 text-sm font-medium text-gray-700">Add 4% Card Fee</span>
+                </label>
+            </div>
+            
+            <p class="text-xs text-gray-500 mb-6 bg-gray-100 p-3 rounded border-l-4 border-blue-600">
+                Each task is billed separately and is due immediately upon completion of that specific task.
+            </p>
+
+            <div id="payment-list" class="space-y-3">
+                <!-- Populated by JS -->
+            </div>
+            
+            <div class="mt-6 pt-6 border-t border-gray-200 hidden" id="cc-fee-notice">
+                <div class="flex justify-between text-sm text-gray-500">
+                    <span>Total Estimated Processing Fees:</span>
+                    <span id="breakdown-cc">$0.00</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Signature Section -->
+        <div class="p-8 mt-4 no-break">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div>
+                    <label for="client-name" class="block text-sm font-medium text-gray-700">Client Printed Name</label>
+                    <input type="text" id="client-name" placeholder="Dave or Liz Stewart" class="mt-1 block w-full bg-gray-50 px-3 py-2 border border-gray-300 rounded-md">
+                </div>
+                <div>
+                    <label for="date-input" class="block text-sm font-medium text-gray-700">Date</label>
+                    <input type="date" id="date-input" class="mt-1 block w-full bg-gray-50 px-3 py-2 border border-gray-300 rounded-md">
+                </div>
+            </div>
+
+            <div class="mt-8">
+                <label class="block text-sm font-medium text-gray-700">Client Signature</label>
+                <canvas id="signature-pad" width="400" height="150" class="mt-1 w-full sm:w-[400px] border border-gray-300 rounded-md bg-gray-50"></canvas>
+                <div class="mt-2 sm:w-[400px] text-right">
+                    <button onclick="clearSignature()" class="text-sm text-gray-500 hover:text-gray-700 underline no-print">Clear Signature</button>
+                </div>
+            </div>
+            
+            <div class="mt-10 pt-6 border-t-2 border-dashed border-gray-300 no-print">
+                <div class="mt-6 flex justify-center">
+                    <button onclick="window.print()" class="px-8 py-3 bg-slate-800 text-white font-semibold rounded-lg shadow-md hover:bg-slate-700 transition-colors">
+                        Save as PDF / Print
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Terms Appendix -->
+        <div class="mt-12 pt-6 border-t-8 border-gray-100 page-break p-8">
+             <h3 class="text-xl font-bold mb-6 uppercase text-slate-800 text-center">Terms & Specifications</h3>
+
+            <div class="grid sm:grid-cols-2 gap-8 text-sm text-gray-700">
+                <div>
+                    <h4 class="font-bold text-gray-800 mb-2 border-b">Payment Terms</h4>
+                    <ul class="list-disc list-inside space-y-1 text-gray-600">
+                        <li>Payment is due upon completion of each individual phase.</li>
+                        <li>Methods: Cash, Check, or Credit Card (+4% fee).</li>
+                        <li>Quotes valid for 30 days.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-800 mb-2 border-b">Scope Conditions</h4>
+                    <ul class="list-disc list-inside space-y-1 text-gray-600">
+                        <li><strong>Cabinetry:</strong> Crown salvaged where possible.</li>
+                        <li><strong>Homeowner Items:</strong> Tile, Grout, Door Trim, and Refrigerator Crown.</li>
+                        <li><strong>Countertops:</strong> Not included in this proposal.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const PHASES = [
+            { id: 'check-p1', name: 'Phase 1: Cabinetry & Electrical Finishing', price: 200 },
+            { id: 'check-p2', name: 'Phase 2: Island Detailing', price: 250 },
+            { id: 'check-p3', name: 'Phase 3: Exterior Door Installation', price: 900 },
+            { id: 'check-p4', name: 'Phase 4: Tile Backsplash Installation', price: 1000 },
+            { id: 'check-p5', name: 'Phase 5: Painting & Touch-up', price: 350 }
+        ];
+
+        const HARDWARE_PRICE = 47.08;
+        const DRAWER_PRICE = 200.00;
+        const HAULING_PRICE = 150.00;
+        const CC_FEE_RATE = 0.04;
+
+        let selectedHardware = 'a'; // Default to Contractor Sourced
+
+        // Set Today's Date
+        const today = new Date().toLocaleDateString();
+        document.getElementById('current-date').innerText = "Date: " + today;
+
+        function formatMoney(amount) {
+            return '$' + amount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        }
+
+        function toggleCheckbox(id) {
+            const cb = document.getElementById(id);
+            cb.checked = !cb.checked;
+            calculateTotal();
+        }
+
+        function selectMaterial(opt) {
+            selectedHardware = opt;
+            document.getElementById('card-mat-a').classList.remove('selected', 'border-blue-600', 'bg-blue-50');
+            document.getElementById('card-mat-b').classList.remove('selected', 'border-blue-600', 'bg-blue-50');
+            document.getElementById('radio-mat-a').classList.remove('border-blue-600');
+            document.getElementById('radio-mat-b').classList.remove('border-blue-600');
+            document.getElementById('radio-mat-a').querySelector('div').classList.add('hidden');
+            document.getElementById('radio-mat-b').querySelector('div').classList.add('hidden');
+
+            const card = document.getElementById('card-mat-' + opt);
+            card.classList.add('selected', 'border-blue-600', 'bg-blue-50');
+            const radio = document.getElementById('radio-mat-' + opt);
+            radio.classList.add('border-blue-600');
+            radio.querySelector('div').classList.remove('hidden');
+
+            calculateTotal();
+        }
+
+        function calculateTotal() {
+            const useCC = document.getElementById('use-credit-card').checked;
+            const paymentList = document.getElementById('payment-list');
+            paymentList.innerHTML = '';
+            
+            let currentSubtotal = 0;
+            let currentTotal = 0;
+            let totalCCFee = 0;
+
+            const activeTasks = [];
+
+            // 1. Base Phases
+            PHASES.forEach(p => {
+                if (document.getElementById(p.id).checked) {
+                    activeTasks.push({ name: p.name, amount: p.price });
+                    currentSubtotal += p.price;
+                }
+            });
+
+            // Update subtotal display for primary scope
+            document.getElementById('display-base-total').innerText = formatMoney(currentSubtotal);
+
+            // 2. Hardware
+            if (selectedHardware === 'a') {
+                activeTasks.push({ name: 'Hardware Procurement (Registers)', amount: HARDWARE_PRICE });
+            }
+
+            // 3. Add-ons
+            if (document.getElementById('check-addon-1').checked) {
+                activeTasks.push({ name: 'Oven Drawer Handle Refinish', amount: DRAWER_PRICE });
+            }
+            if (document.getElementById('check-addon-2').checked) {
+                activeTasks.push({ name: 'Debris Hauling', amount: HAULING_PRICE });
+            }
+
+            // Generate Payment Schedule UI
+            if (activeTasks.length === 0) {
+                paymentList.innerHTML = '<p class="text-center text-gray-400 py-4 italic">No items selected.</p>';
+            }
+
+            activeTasks.forEach((task) => {
+                let finalAmt = task.amount;
+                if (useCC) {
+                    const fee = task.amount * CC_FEE_RATE;
+                    finalAmt += fee;
+                    totalCCFee += fee;
+                }
+
+                currentTotal += finalAmt;
+
+                const div = document.createElement('div');
+                div.className = "flex justify-between items-center bg-white p-4 rounded border border-gray-200 shadow-sm border-l-4 border-l-blue-600";
+                div.innerHTML = `
+                    <div class="text-sm">
+                        <span class="font-bold text-gray-800 text-[10px] uppercase block text-blue-600 mb-0.5 tracking-tighter">Due at Completion:</span>
+                        <span class="text-gray-700 font-medium">${task.name}</span>
+                    </div>
+                    <div class="text-lg font-bold text-gray-900">${formatMoney(finalAmt)}</div>
+                `;
+                paymentList.appendChild(div);
+            });
+
+            // Update Grand Total
+            document.getElementById('grand-total').innerText = formatMoney(currentTotal);
+            document.getElementById('breakdown-cc').innerText = formatMoney(totalCCFee);
+            
+            if (useCC && activeTasks.length > 0) {
+                document.getElementById('cc-fee-notice').classList.remove('hidden');
+            } else {
+                document.getElementById('cc-fee-notice').classList.add('hidden');
+            }
+        }
+
+        // --- Signature Pad Logic ---
+        const canvas = document.getElementById('signature-pad');
+        const ctx = canvas.getContext('2d');
+        let drawing = false;
+        
+        function resizeCanvas() {
+            const ratio = Math.max(window.devicePixelRatio || 1, 1);
+            canvas.width = canvas.offsetWidth * ratio;
+            canvas.height = canvas.offsetHeight * ratio;
+            ctx.scale(ratio, ratio);
+        }
+        window.addEventListener('resize', resizeCanvas);
+        setTimeout(resizeCanvas, 200);
+        
+        function start(e) { drawing = true; draw(e); }
+        function stop() { drawing = false; ctx.beginPath(); }
+        function draw(e) {
+            if (!drawing) return;
+            const rect = canvas.getBoundingClientRect();
+            const x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
+            const y = (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top;
+            ctx.lineWidth = 2;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = '#1e293b';
+            ctx.lineTo(x, y);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            e.preventDefault();
+        }
+        
+        canvas.addEventListener('mousedown', start);
+        canvas.addEventListener('mouseup', stop);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('touchstart', start, {passive: false});
+        canvas.addEventListener('touchend', stop);
+        canvas.addEventListener('touchmove', draw, {passive: false});
+        
+        function clearSignature() { ctx.clearRect(0, 0, canvas.width, canvas.height); }
+
+        // Initial Calc
+        calculateTotal();
+    </script>
+</body>
+</html>
