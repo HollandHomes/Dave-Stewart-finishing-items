@@ -84,20 +84,20 @@
                             </td>
                             <td class="py-3 align-top">
                                 <span class="font-bold text-gray-800">Phase 1: Cabinetry & Electrical Finishing</span><br>
-                                <span class="text-gray-500 text-xs italic">Filler pieces, crown adjustment/prep, stovetop vent, door alignment, trim under cabinets, and lighting fix. (Owner sources missing crown above fridge).</span>
+                                <span class="text-gray-500 text-xs italic">Filler pieces, stovetop vent install, door alignment, trim under cabinets, and lighting fix.</span>
                             </td>
                             <td class="py-3 text-right font-medium align-top">$200.00</td>
                         </tr>
-                        <!-- Phase 2 -->
-                        <tr class="border-b border-gray-200 hover:bg-white transition-colors cursor-pointer" onclick="toggleCheckbox('check-p2')">
+                        <!-- Phase 2 (Crown) -->
+                        <tr class="border-b border-gray-200 hover:bg-white transition-colors cursor-pointer" onclick="toggleCheckbox('check-p6')">
                             <td class="py-3 px-2 align-top">
-                                <input type="checkbox" id="check-p2" class="h-5 w-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500" onchange="calculateTotal()" onclick="event.stopPropagation()">
+                                <input type="checkbox" id="check-p6" class="h-5 w-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500" onchange="calculateTotal()" onclick="event.stopPropagation()">
                             </td>
                             <td class="py-3 align-top">
-                                <span class="font-bold text-gray-800">Phase 2: Island Detailing</span><br>
-                                <span class="text-gray-500 text-xs italic">Installation of wood under the island as discussed in walkthrough.</span>
+                                <span class="font-bold text-gray-800">Phase 2: Crown Molding Detail & Install</span><br>
+                                <span class="text-gray-500 text-xs italic">Installation of homeowner-sourced crown above refrigerator; adjusting and filling existing crown ready for touch-up paint.</span>
                             </td>
-                            <td class="py-3 text-right font-medium align-top">$250.00</td>
+                            <td class="py-3 text-right font-medium align-top">$200.00</td>
                         </tr>
                         <!-- Phase 3 -->
                         <tr class="border-b border-gray-200 hover:bg-white transition-colors cursor-pointer" onclick="toggleCheckbox('check-p3')">
@@ -131,6 +131,17 @@
                                 <span class="text-gray-500 text-xs italic">Painting of new/existing trim and cabinet/crown touch-ups.</span>
                             </td>
                             <td class="py-3 text-right font-medium align-top">$350.00</td>
+                        </tr>
+                        <!-- Phase 6 (Island) -->
+                        <tr class="border-b border-gray-200 hover:bg-white transition-colors cursor-pointer" onclick="toggleCheckbox('check-p2')">
+                            <td class="py-3 px-2 align-top">
+                                <input type="checkbox" id="check-p2" class="h-5 w-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500" onchange="calculateTotal()" onclick="event.stopPropagation()">
+                            </td>
+                            <td class="py-3 align-top">
+                                <span class="font-bold text-gray-800">Phase 6: Island Detailing</span><br>
+                                <span class="text-gray-500 text-xs italic">Installation of wood under the island as discussed in walkthrough.</span>
+                            </td>
+                            <td class="py-3 text-right font-medium align-top">$250.00</td>
                         </tr>
                     </tbody>
                     <tfoot>
@@ -310,10 +321,11 @@
     <script>
         const PHASES = [
             { id: 'check-p1', name: 'Phase 1: Cabinetry & Electrical Finishing', price: 200 },
-            { id: 'check-p2', name: 'Phase 2: Island Detailing', price: 250 },
+            { id: 'check-p6', name: 'Phase 2: Crown Molding Detail & Install', price: 200 },
             { id: 'check-p3', name: 'Phase 3: Exterior Door Installation', price: 900 },
             { id: 'check-p4', name: 'Phase 4: Tile Backsplash Installation', price: 1000 },
-            { id: 'check-p5', name: 'Phase 5: Painting & Touch-up', price: 350 }
+            { id: 'check-p5', name: 'Phase 5: Painting & Touch-up', price: 350 },
+            { id: 'check-p2', name: 'Phase 6: Island Detailing', price: 250 }
         ];
 
         const HARDWARE_PRICE = 47.08;
